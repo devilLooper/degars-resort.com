@@ -1,23 +1,4 @@
-<?php 
-error_reporting(0);
-include "connection/conn.php";
-$fetchstatus = "SELECT * FROM e_reservation";
-$getres = mysqli_query($db,$fetchstatus);
-$fetchrow = mysqli_fetch_assoc($getres);
-$status =$fetchrow['status'];
-$dueDate =$fetchrow['dueDate'];
-$datetoday = date('Y-m-d');
-if ($dueDate == $datetoday && $status = 'PENDING') {
-    $auto_update_stats = "UPDATE `e_reservation` SET status = 'CANCELLED'";
-$auto_update_stats_result = mysqli_query($db, $auto_update_stats);
 
-if ($auto_update_stats_result) {
-    header("refresh: 1800;");
-}
-}
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
