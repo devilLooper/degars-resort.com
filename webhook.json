@@ -1,0 +1,24 @@
+{
+    "data": {
+      "id": "src_P9NfcyGrFUdJHuCBLjsUQ5GF",
+      "type": "source",
+      "attributes": {
+        "amount": 10000,
+        "billing": null,
+        "currency": "PHP",
+        "description": null,
+        "livemode": true,
+        "redirect": {
+          "checkout_url": "https://payments.gcash.com/gcash-cashier-web/1.2.1/index.html#/confirm?bizNo=20221113121212800110170814831904328&timestamp=1668352748260&sign=ZFkgTmkgFZTJ9P%2BG4%2BmAxYUMLvrcYzLPLmUaOjZ8%2BJpvwXkC0PVOmTddPBEdZwLmTY1HYQYp8BQZI0%2BdjNHKXPy3vqSzKWxj0plOVsrMb%2BO7tOtBh2MZr9XYSXUk8Xa93qfce7pCqK6HW7GzJcqemvARlQ71acCNXasywShy4yG0%2BnzhPZbVbwISUaBw7WvoKZ3mpynoB2uprw3dDeqMNx%2BBaEYwH8Hq4AGoDnWZvs2X2vjwKWRhzByrLUKBQpDnNWhIikdRWFyTV1z6SSvjSiGQuNSd5XvdEJPzl7Bc8xG%2FwCi4luEo2%2Boy4FUAT1RAtA3dSIRtgDX9M4eOy%2B69qA%3D%3D&merchantName=DEGARS%20RESORT&orderAmount=100.00&pdCode=51051000101000100001",
+          "failed": "https://degarsmanor.000webhostapp.com/degarsmanor/failed.php",
+          "success": "https://degarsmanor.000webhostapp.com/degarsmanor/success.php"
+        },
+        "statement_descriptor": null,
+        "status": "pending",
+        "type": "gcash",
+        "metadata": null,
+        "created_at": 1668352748,
+        "updated_at": 1668352748
+      }
+    }
+  }

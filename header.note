@@ -1,0 +1,185 @@
+
+                        <form action="" method="get">
+                            <div class="col">
+                                <label for="formGroupExampleInput" class="form-label">Firstname</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Firstname">
+                            </div>
+                            <div class="col">
+                                <label for="formGroupExampleInput" class="form-label">Lastname</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Lastname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Phone Number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password">
+                            </div> 
+                        </form> 
+
+
+
+
+
+
+
+                        <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Postion</th>
+                    <th>Account Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $results = mysqli_query($db, "SELECT * FROM admin"); ?>
+                <?php while ($row = $results->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $row['firstName']; ?></td>
+                    <td><?php echo $row['lastName']; ?></td>
+                    <td><?php echo $row['phoneNum']; ?></td>
+                    <td><?php echo $row['adminEmail']; ?></td>
+                    <td><?php echo $row['position']; ?></td>
+                    <td><?php echo $row['dateRegistered']; ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+
+
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.4/css/fixedHeader.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+  <script src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
+
+
+ STEEEEEPS
+
+<div class="position-relative m-4">
+  <div class="progress" style="height: 1px;">
+    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
+  <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button>
+  <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
+</div>
+
+katung 123
+
+<div class="position-relative m-4">
+  <div class="progress" style="height: 1px;">
+    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
+  <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button>
+  <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
+</div>
+
+
+
+<?php
+include 'connection/conn.php';
+session_start();
+// If form submitted, insert values into the database.
+$error = "";
+if (isset($_POST['adminUsername'])){
+        // removes backslashes
+	$adminUsername = stripslashes($_REQUEST['adminUsername']);
+        //escapes special characters in a string
+	$adminUsername = mysqli_real_escape_string($db,$adminUsername);
+	$adminPass = stripslashes($_REQUEST['adminPass']);
+	$adminPass = mysqli_real_escape_string($db,$adminPass);
+	//Checking is user existing in the database or not
+        $query = "SELECT * FROM `admin` WHERE adminUsername='$adminUsername'
+and adminPass='$adminPass'";
+	$result = mysqli_query($db,$query) or die(mysql_error());
+	$rows = mysqli_num_rows($result);
+        if($rows==1){
+	    $_SESSION['adminUsername'] = $adminUsername;
+        // Redirect user to index.php
+	    header("Location: admin/dashboard.php");
+        }else{
+             $error = "Username of Password is Invalid";
+            }
+            }
+?>
+
+
+            <form action="" method="post">
+            // newly added field
+            <input type="hidden" name="id" value="<?php echo $cottageType_ID; ?>">
+
+            // modified form fields
+            <input type="text" name="cottaName" value="<?php echo $cottName; ?>">
+            <input type="text" name="cottDescrip" value="<?php echo $cottDescrip; ?>">
+            <input type="text" name="cottPrice" value="<?php echo $cottPrice; ?>">
+            <?php if ($update == true): ?>
+                <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+            <?php else: ?>
+                <button class="btn" type="submit" name="save" >Save</button>
+            <?php endif ?>
+            </form>
+
+
+            INSERT INTO bar (description, foo_id) VALUES
+    ( 'testing',     SELECT id from foo WHERE type='blue' ),
+    ( 'another row', SELECT id from foo WHERE type='red'  );
+---------------------------------------------------------------
+            <?php 
+            $query ="SELECT category_ID, name FROM category";
+            $result = $db->query($query);
+            if($result->num_rows> 0){
+            $options= mysqli_fetch_all($result, MYSQLI_ASSOC);
+            }
+        ?>
+
+
+        
+        <label class="form-label" for="">Category</label>
+        <select class="form-select" aria-label="Default select example" name ="categoryName">
+            <option selected>Select Category</option>
+            <?php 
+                foreach ($options as $option) {
+            ?>
+            <option value="<?php echo $option['category_ID']; ?>"><?php echo $option['name']; ?></option>
+            <?php 
+                }
+            ?>
+        </select>
+
+
+
+        const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully'
+})
